@@ -1,0 +1,43 @@
+{
+  "name": "fluxstore",
+  "version": "0.1.0",
+  "description": "Simple utility for creating Flux stores",
+  "author": "Josh Swan <josh@sportifik.com>",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joshswan/fluxstore"
+  },
+  "bugs": {
+    "url": "https://github.com/joshswan/fluxstore/issues"
+  },
+  "keywords": [
+    "flux helper",
+    "flux store",
+    "flux"
+  ],
+  "files": [
+    "lib/index.js",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "gulp build",
+    "clean": "rimraf lib/",
+    "prepublish": "npm run clean && npm run build"
+  },
+  "dependencies": {
+    "events": "^1.1.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^4.0.5",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-plugin-transform-object-assign": "^6.5.0",
+    "babel-plugin-transform-object-rest-spread": "^6.5.0",
+    "eslint": "^1.4.3",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.1",
+    "rimraf": "^2.4.3"
+  },
+  "license": "MIT"
+}
