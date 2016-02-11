@@ -27,13 +27,22 @@ module.exports = function(methods, changeEvent) {
         this.refreshTimer = null;
       }
     },
-    enableRefresh: function(delay) {
+    enableRefresh: function(delay, immediate) {
       this.refreshTimer = setInterval(() => {
-        this.shouldRefresh() && this.refresh && this.refresh();
+        this._refresh();
       }, delay);
+
+      if (immediate) {
+        setImmediate(() => {
+          this._refresh();
+        });
+      }
     },
     shouldRefresh: function() {
       return true;
+    },
+    _refresh: function() {
+      this.shouldRefresh() && this.refresh && this.refresh();
     },
   };
 
