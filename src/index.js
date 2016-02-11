@@ -11,13 +11,13 @@ module.exports = function(options, changeEvent) {
   let CHANGE_EVENT = changeEvent || 'change';
 
   let methods = {
-    emitChange: (...args) => {
+    emitChange: function(...args) {
       this.emit(CHANGE_EVENT, ...args);
     },
-    addChangeListener: (callback) => {
+    addChangeListener: function(callback) {
       this.on(CHANGE_EVENT, callback);
     },
-    removeChangeListener: (callback) => {
+    removeChangeListener: function(callback) {
       this.removeListener(CHANGE_EVENT, callback);
     },
   };
