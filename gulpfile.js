@@ -1,5 +1,5 @@
 /*!
- * Copyright 2015 Josh Swan
+ * Copyright 2016 Josh Swan
  * Released under the MIT license
  * https://github.com/joshswan/fluxstore/blob/master/LICENSE
  */
