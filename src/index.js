@@ -20,6 +20,12 @@ module.exports = function(methods, changeEvent) {
     removeChangeListener: function(callback) {
       this.removeListener(CHANGE_EVENT, callback);
     },
+    getListenerCount: function() {
+      return this.listenerCount(CHANGE_EVENT);
+    },
+    hasListeners: function() {
+      return !!this.getListenerCount();
+    },
     disableRefresh: function() {
       if (this.refreshTimer) {
         clearInterval(this.refreshTimer);
