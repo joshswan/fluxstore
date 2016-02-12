@@ -28,6 +28,8 @@ module.exports = function(methods, changeEvent) {
       }
     },
     enableRefresh: function(delay, immediate) {
+      this.disableRefresh();
+
       this.refreshTimer = setInterval(() => {
         this._refresh();
       }, delay);
