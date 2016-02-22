@@ -26,6 +26,9 @@ module.exports = function(methods, changeEvent) {
     hasListeners: function() {
       return !!this.getListenerCount();
     },
+    isExpired: function(timestamp, maxage) {
+      return timestamp <= Date.now() - maxage * 1000;
+    },
     disableRefresh: function() {
       if (this.refreshTimer) {
         clearInterval(this.refreshTimer);
