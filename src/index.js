@@ -26,9 +26,6 @@ module.exports = function(methods, changeEvent) {
     hasListeners: function() {
       return !!this.getListenerCount();
     },
-    isExpired: function(timestamp, maxage) {
-      return timestamp <= Date.now() - maxage * 1000;
-    },
     disableRefresh: function() {
       if (this.refreshTimer) {
         clearInterval(this.refreshTimer);
@@ -40,20 +37,20 @@ module.exports = function(methods, changeEvent) {
       this.disableRefresh();
 
       this.refreshTimer = setInterval(() => {
-        this._refresh();
+        this._refreshIfNeeded();
       }, delay);
 
       if (immediate) {
         setImmediate(() => {
-          this._refresh();
+          this._refreshIfNeeded();
         });
       }
     },
-    shouldRefresh: function() {
+    _shouldRefresh: function() {
       return true;
     },
-    _refresh: function() {
-      this.shouldRefresh() && this.refresh && this.refresh();
+    _refreshIfNeeded: function() {
+      this._shouldRefresh() && this.refresh && this.refresh();
     },
   };
 
