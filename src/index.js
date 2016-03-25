@@ -33,7 +33,7 @@ module.exports = function(methods, changeEvent) {
         this.refreshTimer = null;
       }
     },
-    enableRefresh: function(delay, immediate) {
+    enableRefresh: function(delay, immediate, force) {
       this.disableRefresh();
 
       this.refreshTimer = setInterval(() => {
@@ -42,15 +42,15 @@ module.exports = function(methods, changeEvent) {
 
       if (immediate) {
         setImmediate(() => {
-          this._refreshIfNeeded();
+          this._refreshIfNeeded(force);
         });
       }
     },
     _shouldRefresh: function() {
       return true;
     },
-    _refreshIfNeeded: function() {
-      this._shouldRefresh() && this.refresh && this.refresh();
+    _refreshIfNeeded: function(force) {
+      (force || this._shouldRefresh()) && this.refresh && this.refresh();
     },
   };
 
